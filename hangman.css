@@ -1,0 +1,15 @@
+/* #gameDiv {
+    background-image: url("pictures/BatmanPic.jpg");
+    background-repeat: no-repeat;
+  } */
+
+#gameDiv{
+    text-align: center;
+}
+#heroPic{
+float: left;
+background-image: url(pictures/batmanHero.jpg);
+}
+#villanPic{
+    background-image:url(pictures/joker.jpg) ;
+}

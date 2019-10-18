@@ -94,7 +94,7 @@ function changeWinLossCount(didTheyWin) {
         losses++;
         console.log(losses);
         // move villain pic if lost before we move batman
-        document.getElementById("villainPic").style = "left: 5%; top: 70%";
+        document.getElementById("changePic").style = "left: 5%; top: 70%";
         alert("They got away!");
     }
     // change no matter if they won or loss

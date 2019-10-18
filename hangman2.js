@@ -37,35 +37,36 @@ function setupNewGame() {
     letterTiles = [];
     gameOver = false;
     // this line makes the cpu choose a random villan array everytime
-    // villainToGuess = villans[Math.floor(Math.random() * villans.length)].toLowerCase();
+    villainToGuess = villans[Math.floor(Math.random() * villans.length)].toLowerCase();
+    
     // makes cpu choose the array in order
     //converting to lower case to make case insensitive
-    if (villainCounter >= villans.length) {
-        alert("GAME OVER!!! Try again");
-        // endGameFunction();
-    } else {
-        villainToGuess = villans[villainCounter].toLowerCase();
-    }
-    villainCounter++;
+        // if (villainCounter >= villans.length) {
+        //     alert("GAME OVER!!! Try again");
+        //     // endGameFunction();
+        // } else {
+        //     villainToGuess = villans[villainCounter].toLowerCase();
+        // }
+        // villainCounter++;
     // when new game change opacity of pic to invisible
     document.getElementById("changePic").style = "opacity: 0.0";
     var smallViewM = window.matchMedia("(max-width: 768px)")
     var smallViewS = window.matchMedia("(max-width: 640px)")
     //  makes hero pic apear under gameDiv when using smaller screen
-        if (smallViewS.matches) { // If media query matches
-            document.getElementById("heroPic").style = "left: 1%; top: 80%";
-        } else if (smallViewM.matches) { // If media query matches
-            document.getElementById("heroPic").style = "left: 1%; top: 51%";
-        } else{
-                    document.getElementById("heroPic").style = "left: 10%; top: 30%";
-            }
-    
+    if (smallViewS.matches) { // If media query matches
+        document.getElementById("heroPic").style = "left: 1%; top: 80%";
+    } else if (smallViewM.matches) { // If media query matches
+        document.getElementById("heroPic").style = "left: 1%; top: 51%";
+    } else {
+        document.getElementById("heroPic").style = "left: 10%; top: 30%";
+    }
+
     for (var i = 0; i < villainToGuess.length; i++) {
         letterTiles.push("_");
     }
 
     displayCurrentLetterTiles(letterTiles, lettersGuessedArray, turns, wins, losses);
- };
+};
 //when page loads, setup the new game for the player
 setupNewGame();
 
@@ -89,12 +90,13 @@ function changeWinLossCount(didTheyWin) {
     if (didTheyWin) {
         wins++;
         console.log(wins);
+        document.getElementById("villainPic").style = "left: 57%; top: 45%;";
         alert("You got 'em!! On to the next one!");
     } else {
         losses++;
         console.log(losses);
         // move villain pic if lost before we move batman
-        document.getElementById("changePic").style = "left: 5%; top: 70%";
+        document.getElementById("villainPic").style = "left: 5%; top: 70%";
         alert("They got away!");
     }
     // change no matter if they won or loss
@@ -186,14 +188,16 @@ document.onkeyup = function (event) {
     //converting to lower case to make case insensitive
     var letterGuessed = event.key.toLowerCase();
     console.log(letterGuessed);
-    //add to user guess array if not guessed already
-    // JavaScript RegExp Reference to let user input letters only and the spacebar
-    if (!lettersGuessedArray.includes(letterGuessed) && !gameOver && letterGuessed.match(/[a-z]/)) {
-        lettersGuessedArray.push(letterGuessed);
-        //call checkLetterGuessed if not
-        checkLetterGuessed(letterGuessed);
+    if (letterGuessed.match(/^[a-z]+$/) && letterGuessed.length == 1) {
+        //add to user guess array if not guessed already
+        // JavaScript RegExp Reference to let user input letters only and the spacebar
+        if (!lettersGuessedArray.includes(letterGuessed) && !gameOver) {
+            lettersGuessedArray.push(letterGuessed);
+            //call checkLetterGuessed if not
+            checkLetterGuessed(letterGuessed);
 
-    };
+        };
+    }
 
     // show what array we are on out of how many 
 
@@ -211,6 +215,6 @@ document.onkeyup = function (event) {
 
 //brownie points
 //check if this was guessed -if it was, tell the user - call tellPlayerLetterGuessed
-function tellPlayerLetterGuessed() {
+// function tellPlayerLetterGuessed() {
     //display that the letter was guessed already
-}
+// }

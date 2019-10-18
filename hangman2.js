@@ -19,11 +19,9 @@ var turnsRemaining = document.getElementById("turns");
 var winsElement = document.getElementById("wins");
 var lossesElement = document.getElementById("losses");
 
-// show what num on the array we are on out of how many
-var villainWeAreon = document.getElementById("villainArrayWerOn");
-// console.log(letterTiles[i]  +  villains.length)
-
-
+// show what num on the array we are on out of how many??
+// var villainWeAreon = document.getElementById("villainArrayWerOn");
+// console.log(letterTiles[i]  +  villains.length) 
 
 var reset = document.getElementById("reset");
 //add event listener to this button to call setupNewGame
@@ -51,11 +49,14 @@ function setupNewGame() {
     villainCounter++;
     // when new game change opacity of pic to invisible
     document.getElementById("changePic").style = "opacity: 0.0";
-    var smallView = window.matchMedia("(max-width: 840px)")
+    var smallViewM = window.matchMedia("(max-width: 768px)")
+    var smallViewS = window.matchMedia("(max-width: 640px)")
     //  makes hero pic apear under gameDiv when using smaller screen
-        if (smallView.matches) { // If media query matches
-            document.getElementById("heroPic").style = "left: 7%; top: 70%";
-        } else {
+        if (smallViewS.matches) { // If media query matches
+            document.getElementById("heroPic").style = "left: 1%; top: 80%";
+        } else if (smallViewM.matches) { // If media query matches
+            document.getElementById("heroPic").style = "left: 1%; top: 51%";
+        } else{
                     document.getElementById("heroPic").style = "left: 10%; top: 30%";
             }
     
@@ -88,10 +89,15 @@ function changeWinLossCount(didTheyWin) {
     if (didTheyWin) {
         wins++;
         console.log(wins);
+        alert("You got 'em!! On to the next one!");
     } else {
         losses++;
         console.log(losses);
+        // move villain pic if lost before we move batman
+        document.getElementById("villainPic").style = "left: 5%; top: 70%";
+        alert("They got away!");
     }
+    // change no matter if they won or loss
     gameOver = true;
     villain.textContent = villainToGuess;
     if (villainToGuess == "catwoman") {

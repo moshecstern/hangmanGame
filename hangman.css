@@ -12,7 +12,7 @@ body, html{
    min-height: 100%; */ 
 } 
 .directions{
-    color: beige;
+    color: #fdff00;
     text-align: center;
     margin-top: 18px;
 }
@@ -20,11 +20,11 @@ body, html{
     position:absolute;
     width:25%px;
     height:100px;
-    left:41%;
-    top:25%;
+    left: 46%;
+    top: 37%;
     margin-left:-20px;
     margin-top:-20px;
-    color: beige;
+    color: #fdff00;
     
 }
 #heroPic{
@@ -51,9 +51,15 @@ body, html{
     opacity: 0.0;
 }
 /* when screen is smaller than 840 make heroPic move down the screen to fit */
-@media only screen and (max-width: 840px) {
+@media only screen and (max-width: 768px) {
     #heroPic {
-      left: 7%;
-      top:70%;
+        left: 1%;
+        top: 51%;
     }
+  }
+  @media only screen and (max-width: 640px){
+#heroPic {
+    left: 1%;
+    top: 90%;
+}
   }

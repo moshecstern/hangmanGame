@@ -19,10 +19,16 @@ var turnsRemaining = document.getElementById("turns");
 var winsElement = document.getElementById("wins");
 var lossesElement = document.getElementById("losses");
 
+// show what num on the array we are on out of how many
+var villainWeAreon = document.getElementById("villainArrayWerOn");
+// console.log(letterTiles[i]  +  villains.length)
+
+
+
 var reset = document.getElementById("reset");
 //add event listener to this button to call setupNewGame
 reset.addEventListener("click", setupNewGame);
-//create a start game button and add reference here
+//create a start game button by setting the stats for the game
 function setupNewGame() {
     //hide reset button
     //variable.style.display = "none";
@@ -32,29 +38,38 @@ function setupNewGame() {
     lettersGuessedArray = [];
     letterTiles = [];
     gameOver = false;
-    //converting to lower case to make case insensitive
+    // this line makes the cpu choose a random villan array everytime
     // villainToGuess = villans[Math.floor(Math.random() * villans.length)].toLowerCase();
-    if(villainCounter>=villans.length) {
+    // makes cpu choose the array in order
+    //converting to lower case to make case insensitive
+    if (villainCounter >= villans.length) {
         alert("GAME OVER!!! Try again");
         // endGameFunction();
     } else {
         villainToGuess = villans[villainCounter].toLowerCase();
     }
-      villainCounter ++;
+    villainCounter++;
     // when new game change opacity of pic to invisible
     document.getElementById("changePic").style = "opacity: 0.0";
-    document.getElementById("heroPic").style = "left: 10%; top: 30%";
+    var smallView = window.matchMedia("(max-width: 840px)")
+    //  makes hero pic apear under gameDiv when using smaller screen
+        if (smallView.matches) { // If media query matches
+            document.getElementById("heroPic").style = "left: 7%; top: 70%";
+        } else {
+                    document.getElementById("heroPic").style = "left: 10%; top: 30%";
+            }
+    
     for (var i = 0; i < villainToGuess.length; i++) {
         letterTiles.push("_");
     }
 
     displayCurrentLetterTiles(letterTiles, lettersGuessedArray, turns, wins, losses);
-};
+ };
 //when page loads, setup the new game for the player
 setupNewGame();
 
 function displayCurrentLetterTiles(letterTilesArray, lettersGuessedArrayArray, turns, wins, losses) {
-    //display the letter tiles array in the html here
+    //displays the letter tiles array in the html here
     villainLetters.textContent = letterTilesArray.join(" ");
     //also display current letters guessed
     letterGuessed.textContent = lettersGuessedArrayArray.join(" ");
@@ -95,35 +110,35 @@ function changeWinLossCount(didTheyWin) {
         document.getElementById("changePic").src = "pictures/bane.jpg";
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 67%; top: 25%";
-    } else if(villainToGuess == "poisonivy"){
+    } else if (villainToGuess == "poisonivy") {
         document.getElementById("changePic").src = "pictures/poisonivy.jpg";
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 75%; top: 19%";
-    } else if(villainToGuess == "scarecrow"){
+    } else if (villainToGuess == "scarecrow") {
         document.getElementById("changePic").src = "pictures/scarecrow.jpg";
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 69%; top: 22%";
-    } else if(villainToGuess == "twoface"){
+    } else if (villainToGuess == "twoface") {
         document.getElementById("changePic").src = "pictures/twoface.jpg";
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 75%; top: 19%";
-    } else if(villainToGuess == "riddler"){
+    } else if (villainToGuess == "riddler") {
         document.getElementById("changePic").src = "pictures/riddler.jpg";
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 79%; top: 19%";
-    } else if(villainToGuess == "mrfreeze"){
+    } else if (villainToGuess == "mrfreeze") {
         document.getElementById("changePic").src = "pictures/mrfreeze.jpg";
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 67%; top: 25%";
-    } else if(villainToGuess == "hush"){
+    } else if (villainToGuess == "hush") {
         document.getElementById("changePic").src = "pictures/hush.jpg";
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 75%; top: 19%";
-    } else if(villainToGuess == "harleyquinn"){
+    } else if (villainToGuess == "harleyquinn") {
         document.getElementById("changePic").src = "pictures/harleyquinn.jpg";
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 72%; top: 25%";
-    } 
+    }
 }
 
 function checkLetterGuessed(letter) {
@@ -160,16 +175,21 @@ function checkLetterGuessed(letter) {
 
 
 document.onkeyup = function (event) {
+    // cheat to see what the villain is
+    console.log(villainToGuess);
     //converting to lower case to make case insensitive
     var letterGuessed = event.key.toLowerCase();
     console.log(letterGuessed);
     //add to user guess array if not guessed already
+    // JavaScript RegExp Reference to let user input letters only and the spacebar
     if (!lettersGuessedArray.includes(letterGuessed) && !gameOver && letterGuessed.match(/[a-z]/)) {
         lettersGuessedArray.push(letterGuessed);
         //call checkLetterGuessed if not
         checkLetterGuessed(letterGuessed);
-        console.log(villainToGuess);
+
     };
+
+    // show what array we are on out of how many 
 
 
 

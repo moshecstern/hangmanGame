@@ -11,7 +11,7 @@ body, html{
    /* min-width: 100%;
    min-height: 100%; */ 
 } 
-#directions{
+.directions{
     color: beige;
     text-align: center;
     margin-top: 18px;
@@ -50,3 +50,10 @@ body, html{
 #changePic{
     opacity: 0.0;
 }
+/* when screen is smaller than 840 make heroPic move down the screen to fit */
+@media only screen and (max-width: 840px) {
+    #heroPic {
+      left: 7%;
+      top:70%;
+    }
+  }

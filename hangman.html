@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!-- <link rel = "stylesheet" type = "text/css" href = "hangman.css"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel = "stylesheet" type = "text/css" href = "hangman.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 </head>
 <body>
-    <div id="heroPic"></div>
-<div class= "gameDiv text-center">
+    
+    <div id="heroPic"><img src="pictures/batmanHero.jpg" alt="Batman"></div>
+    <div id="villainPic"><img id="changePic" src="pictures/penguin.jpg" alt="villain"></div>
+    <h1 id="directions">Guess the correct letters to help Batman to catch the villain!!!</h1>
+ <div id= "gameDiv">
     <h2>Villain: <span id="villains">...</span></h2>
     <h2>letters: <span id="villainLetters">...</span></h2>
     <h2>Your Guesses: <span id="userGuess">...</span></h2>
@@ -19,7 +22,8 @@
     <h2>Turns: <span id="turns">0</span></h2>
     <button id="reset">Start Game</button>
 </div>
-<div id="villanPic"></div>
+
+
 <!-- <script src="hangman.js"></script> -->
 <script src="hangman2.js"></script>
 </body>

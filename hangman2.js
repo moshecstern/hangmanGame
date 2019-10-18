@@ -109,7 +109,7 @@ function changeWinLossCount(didTheyWin) {
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 69%; top: 25%";
     } else if (villainToGuess == "joker") {
-        document.getElementById("changePic").src = "Pictures/joker.jpg";
+        document.getElementById("changePic").src = "pictures/joker.jpg";
         document.getElementById("changePic").style = "opacity: initial";
         document.getElementById("heroPic").style = "left: 73%; top: 19%";
     } else if (villainToGuess == "bane") {
